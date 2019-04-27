@@ -7,7 +7,6 @@ class StringHelper
 
         match = []
 
-        characters = string.split("")
         string.split("").each do |c|
             if opening.has_value? c
                 # found the character in opening list
