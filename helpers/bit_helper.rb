@@ -78,7 +78,7 @@ class BitHelper
 		# check maximum integer value by int_bits
 		raise ArgumentError if self.bitmask(int_bits) < value
 
-		value.to_s(2).rjust(int_bits,'0')
+		value.to_s(2).rjust(int_bits, "0")
 	end
 
 	# calculate the real steps we will move
