@@ -3,7 +3,7 @@ require 'optparse'
 require 'English'
 
 options = {}
-# OptionParser for more mearningful command line help
+# OptionParser for more meaningful command line help
 optparse = OptionParser.new do |parser|
   parser.on(
     '-n',
