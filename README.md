@@ -38,5 +38,37 @@ Unit test is located in folder `spec/`.To run unit test, please use the command 
 rspec spec
 
 # to run only unit test for circular_shift
-rspec spec spec/helpers/bit_helper_spec.rb
+rspec spec/helpers/bit_helper_spec.rb
+```
+
+# Check balance of parenthesis in a string
+## Command
+
+To check balance of parenthesis in a string, please use the command below:
+
+```
+ruby check_balance_parenthesis.rb  -s STRING
+```
+
+Command usage:
+```
+Usage: check_balance_parenthesis [options]
+    -s, --string STRING              the STRING to be checked
+```
+
+Example command:
+```
+ruby check_balance_parenthesis.rb  -s "([{}()])"
+```
+
+## Unit tests
+
+Unit test is located in folder `spec/`.To run unit test, please use the command below:
+
+```
+# to run all tests
+rspec spec
+
+# to run only unit test for balance of parenthesis
+rspec spec/helpers/string_helper_spec.rb
 ```
