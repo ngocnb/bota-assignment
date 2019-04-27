@@ -13,6 +13,7 @@ class BitHelper
 	# then chopping it off at a certain width
 	def self.shift_left_width(value, int_bits, steps)
 		# check valid type Integer
+        # TODO: need to make the error message more meaningful
 		raise ArgumentError unless value.kind_of? Integer
 		raise ArgumentError unless int_bits.kind_of? Integer
 		raise ArgumentError unless steps.kind_of? Integer
@@ -28,6 +29,7 @@ class BitHelper
 	# circular shift number to the right
 	def self.circular_shift_right(value, int_bits, steps)
 		# check valid type Integer
+        # TODO: need to make the error message more meaningful
 		raise ArgumentError unless value.kind_of? Integer
 		raise ArgumentError unless int_bits.kind_of? Integer
 		raise ArgumentError unless steps.kind_of? Integer
@@ -42,14 +44,17 @@ class BitHelper
 			return value
 		end
 		remaining_bits = int_bits - steps
+        # split the bits into two parts
 		top = self.shift_left_width(value, int_bits, remaining_bits)
 		bottom = value >> steps
+        # put them back together
 		top | bottom
 	end
 
 	# circular shift number to the left
 	def self.circular_shift_left(value, int_bits, steps)
 		# check valid type Integer
+        # TODO: need to make the error message more meaningful
 		raise ArgumentError unless value.kind_of? Integer
 		raise ArgumentError unless int_bits.kind_of? Integer
 		raise ArgumentError unless steps.kind_of? Integer
@@ -64,14 +69,17 @@ class BitHelper
 			return value
 		end
 		remaining_bits = int_bits - steps
+        # split the bits into two parts
 		top = self.shift_left_width(value, int_bits, steps)
 		bottom = value >> remaining_bits
+        # put them back together
 		top | bottom
 	end
 
 	# convert number to bits string
 	def self.number_to_bits(value, int_bits)
 		# check valid type Integer
+        # TODO: need to make the error message more meaningful
 		raise ArgumentError unless value.kind_of? Integer
 		raise ArgumentError unless int_bits.kind_of? Integer
 

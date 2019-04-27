@@ -1,7 +1,7 @@
 require "./helpers/bit_helper"
 
 describe BitHelper do
-    context "When testing BitHelper class, function circular_shift_left and circular_shift_right" do
+    context "Testing BitHelper class, function circular_shift_left and circular_shift_right" do
 
         # input 8 bit number, shift to the left
         it "case number 123 stored using 8 bits, circular shift 2 bits to the left" do
@@ -180,8 +180,88 @@ describe BitHelper do
                 result = BitHelper.circular_shift_right(number, int_bits, steps)
             }.to raise_error ArgumentError
         end
+
+        # TODO: add tests for 16 bits number
+
+        # TODO: add tests for 32 bits number
+
+        # TODO: add tests for 64 bits number
     end
 
-    context "When testing BitHelper class, function circular_shift_left and circular_shift_right" do
+    context "Testing BitHelper class, function bitmask" do
+        # normal case
+        it "case 8 bit" do
+            int_bits = 8
+            expected_result = 255
+            result = BitHelper.bitmask(int_bits)
+
+            expect(result).to eq expected_result
+        end
+
+        # input string
+        it "case abcd1234" do
+            int_bits = "abcd1234"
+
+            expect {
+                result = BitHelper.bitmask(int_bits)
+            }.to raise_error ArgumentError
+        end
+
+        # input float
+        it "case 1.66" do
+            int_bits = 1.66
+
+            expect {
+                result = BitHelper.bitmask(int_bits)
+            }.to raise_error ArgumentError
+        end
+
+        # input negative number
+        it "case -15" do
+            int_bits = -15
+            expected_result = -1
+            result = BitHelper.bitmask(int_bits)
+
+            expect(result).to eq expected_result
+        end
+
+        # boundary test, 32 bits
+        it "case -15" do
+            int_bits = 32
+            expected_result = 4294967295
+            result = BitHelper.bitmask(int_bits)
+
+            expect(result).to eq expected_result
+        end
+
+        # boundary test, 64 bits
+        it "case -15" do
+            int_bits = 64
+            expected_result = 18446744073709551615
+            result = BitHelper.bitmask(int_bits)
+
+            expect(result).to eq expected_result
+        end
+
+        # boundary test, over 64 bits
+        it "case -15" do
+            int_bits = 65
+            expected_result = 36893488147419103231
+            result = BitHelper.bitmask(int_bits)
+
+            expect(result).to eq expected_result
+        end
+    end
+
+    context "Testing BitHelper class, function shift_left_width" do
+        # TODO: add tests for function shift_left_width
+    end
+
+    context "Testing BitHelper class, function number_to_bits" do
+        # TODO: add tests for function number_to_bits
+    end
+
+    context "Testing BitHelper class, function calculate_real_steps" do
+        # TODO: add tests for function calculate_real_steps
     end
 end

@@ -2,6 +2,7 @@ require "./helpers/bit_helper"
 require "optparse"
 
 options = {}
+# OptionParser for more mearningful command line help
 optparse = OptionParser.new do |parser|
     parser.on(
         "-n",
@@ -40,6 +41,7 @@ optparse = OptionParser.new do |parser|
     end
 end.parse!
 
+# check the required arguments
 begin
     optparse.parse!
     mandatory = [:number, :bits, :steps, :direction]
@@ -57,7 +59,7 @@ number = options[:number]
 int_bits = options[:bits]
 steps = options[:steps]
 case options[:direction]
-when "left"
+when "left" # rotate bits to the left
     puts "----------------------------------------------------------"
     puts "Number            : " + number.to_s
     puts "Number in binary  : " + BitHelper.number_to_bits(number, int_bits)
@@ -65,7 +67,7 @@ when "left"
     puts "Result            : " + result.to_s
     puts "Result in binary  : " + BitHelper.number_to_bits(result, int_bits)
     puts "----------------------------------------------------------"
-when "right"
+when "right" # rotate bits to the right
     puts "----------------------------------------------------------"
     puts "Number            : " + number.to_s
     puts "Number in binary  : " + BitHelper.number_to_bits(number, int_bits)
@@ -73,6 +75,6 @@ when "right"
     puts "Result            : " + result.to_s
     puts "Result in binary  : " + BitHelper.number_to_bits(result, int_bits)
     puts "----------------------------------------------------------"
-else
+else # error
     raise OptionParser::InvalidArgument.new("DIRECTION only takes 'left' or 'right'")
 end 
