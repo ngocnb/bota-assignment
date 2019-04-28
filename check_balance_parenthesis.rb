@@ -19,7 +19,7 @@ end.parse!
 begin
   optparse.parse!
   mandatory = [:string]
-  missing = mandatory.select{ |param| options[param].nil? }
+  missing = mandatory.select { |param| options[param].nil? }
   raise OptionParser::MissingArgument, missing.join(', ') unless missing.empty?
 rescue OptionParser::InvalidOption, OptionParser::MissingArgument
   puts $ERROR_INFO.to_s

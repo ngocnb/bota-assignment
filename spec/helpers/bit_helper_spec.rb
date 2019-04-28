@@ -64,9 +64,9 @@ describe BitHelper do
       steps = 2
       int_bits = 8
 
-      expect {
-        result = BitHelper.circular_shift_left(number, int_bits, steps)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.circular_shift_left(number, int_bits, steps)
+      end.to raise_error ArgumentError
     end
 
     # boundary test for 8 bits number, greater than max 255, shift to the right
@@ -75,9 +75,9 @@ describe BitHelper do
       steps = 2
       int_bits = 8
 
-      expect {
-        result = BitHelper.circular_shift_right(number, int_bits, steps)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.circular_shift_right(number, int_bits, steps)
+      end.to raise_error ArgumentError
     end
 
     # boundary test for 8 bits number, shift to the left 8 steps
@@ -142,9 +142,9 @@ describe BitHelper do
       steps = 2
       int_bits = 8
 
-      expect {
-        result = BitHelper.circular_shift_right(number, int_bits, steps)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.circular_shift_right(number, int_bits, steps)
+      end.to raise_error ArgumentError
     end
 
     # input string, shift to the left
@@ -153,9 +153,9 @@ describe BitHelper do
       steps = 2
       int_bits = 8
 
-      expect {
-        result = BitHelper.circular_shift_left(number, int_bits, steps)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.circular_shift_left(number, int_bits, steps)
+      end.to raise_error ArgumentError
     end
 
     # input float, shift to the right
@@ -164,9 +164,9 @@ describe BitHelper do
       steps = 2
       int_bits = 8
 
-      expect {
-        result = BitHelper.circular_shift_right(number, int_bits, steps)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.circular_shift_right(number, int_bits, steps)
+      end.to raise_error ArgumentError
     end
 
     # input float, shift to the left
@@ -175,9 +175,9 @@ describe BitHelper do
       steps = 2
       int_bits = 8
 
-      expect {
-        result = BitHelper.circular_shift_right(number, int_bits, steps)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.circular_shift_right(number, int_bits, steps)
+      end.to raise_error ArgumentError
     end
 
     # TODO: add tests for 16 bits number
@@ -201,18 +201,18 @@ describe BitHelper do
     it 'case abcd1234' do
       int_bits = 'abcd1234'
 
-      expect {
-        result = BitHelper.bitmask(int_bits)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.bitmask(int_bits)
+      end.to raise_error ArgumentError
     end
 
     # input float
     it 'case 1.66' do
       int_bits = 1.66
 
-      expect {
-        result = BitHelper.bitmask(int_bits)
-      }.to raise_error ArgumentError
+      expect do
+        BitHelper.bitmask(int_bits)
+      end.to raise_error ArgumentError
     end
 
     # input negative number
@@ -225,7 +225,7 @@ describe BitHelper do
     end
 
     # boundary test, 32 bits
-    it 'case -15' do
+    it 'case 32 bits number' do
       int_bits = 32
       expected_result = 4_294_967_295
       result = BitHelper.bitmask(int_bits)
@@ -234,7 +234,7 @@ describe BitHelper do
     end
 
     # boundary test, 64 bits
-    it 'case -15' do
+    it 'case 64 bits number' do
       int_bits = 64
       expected_result = 18_446_744_073_709_551_615
       result = BitHelper.bitmask(int_bits)
@@ -243,7 +243,7 @@ describe BitHelper do
     end
 
     # boundary test, over 64 bits
-    it 'case -15' do
+    it 'case over 64 bits number' do
       int_bits = 65
       expected_result = 36_893_488_147_419_103_231
       result = BitHelper.bitmask(int_bits)

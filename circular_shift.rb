@@ -45,8 +45,8 @@ end.parse!
 # check the required arguments
 begin
   optparse.parse!
-  mandatory = %i[number bits steps direction]
-  missing = mandatory.select{ |param| options[param].nil? }
+  mandatory = %i(number bits steps direction)
+  missing = mandatory.select { |param| options[param].nil? }
   raise OptionParser::MissingArgument, missing.join(', ') unless missing.empty?
 rescue OptionParser::InvalidOption, OptionParser::MissingArgument
   puts $ERROR_INFO.to_s

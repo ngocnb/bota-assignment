@@ -2,7 +2,6 @@ require './helpers/string_helper'
 
 describe StringHelper do
   context 'Testing StringHelper class, function check_balance_parenthesis' do
-
     it "case string '([()][][{}])'" do
       string = '([()][][{}])'
       expected_result = true
@@ -72,20 +71,17 @@ describe StringHelper do
     it 'case input integer' do
       string = 11234
 
-      expect {
-        result = StringHelper.check_balance_parenthesis(string)
-      }.to raise_error ArgumentError
-
+      expect do
+        StringHelper.check_balance_parenthesis(string)
+      end.to raise_error ArgumentError
     end
 
     it 'case input float' do
       string = 123.88
 
-      expect {
-        result = StringHelper.check_balance_parenthesis(string)
-      }.to raise_error ArgumentError
-
+      expect do
+        StringHelper.check_balance_parenthesis(string)
+      end.to raise_error ArgumentError
     end
-
   end
 end
