@@ -15,6 +15,7 @@ ruby circular_shift.rb -n 256 -b 8 -s 2 -d left
 
 -> NUMBER exceeds the maximum number 255 of 8 bits
 ```
+- I don't write automated integration test for `circular_shift.rb` file because it's pretty much the same with testing `helpers/bit_helper.rb`
 
 ## Command
 
