@@ -1,6 +1,6 @@
 class StringHelper
   def self.check_balance_parenthesis(string)
-    raise ArgumentError unless string.is_a? String
+    raise ArgumentError, string.to_s + " is not a String" unless string.is_a? String
 
     opening = { 0 => '[', 1 => '{', 2 => '(' }
     closing = { 0 => ']', 1 => '}', 2 => ')' }

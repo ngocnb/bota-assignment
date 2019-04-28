@@ -51,7 +51,7 @@ begin
   missing = mandatory.select { |param| options[param].nil? }
   raise OptionParser::MissingArgument, missing.join(', ') unless missing.empty?
 rescue OptionParser::InvalidOption, OptionParser::InvalidArgument, OptionParser::MissingArgument => e
-  puts "ERROR: " + e.message
+  puts 'ERROR: ' + e.message
   puts '----------------------------------------------------------'
   puts optparse
   puts '----------------------------------------------------------'
@@ -84,5 +84,5 @@ begin
     raise OptionParser::InvalidArgument, "DIRECTION only takes 'left' or 'right'"
   end
 rescue OptionParser::InvalidArgument, ArgumentError => e
-  puts "ERROR: " + e.message
+  puts 'ERROR: ' + e.message
 end
