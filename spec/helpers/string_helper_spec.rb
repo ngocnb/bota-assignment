@@ -83,5 +83,13 @@ describe StringHelper do
         StringHelper.check_balance_parenthesis(string)
       end.to raise_error ArgumentError
     end
+
+    it 'case input nil' do
+      string = nil
+
+      expect do
+        StringHelper.check_balance_parenthesis(string)
+      end.to raise_error ArgumentError
+    end
   end
 end

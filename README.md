@@ -57,6 +57,10 @@ rspec spec/helpers/bit_helper_spec.rb
 ```
 
 # Check balance of parenthesis in a string
+## Assumptions
+
+- I don't write automated integration test for `check_balance_parenthesis.rb` file because it's pretty much the same with testing `helpers/string_helper.rb`
+
 ## Command
 
 To check balance of parenthesis in a string, please use the command below:

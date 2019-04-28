@@ -13,7 +13,7 @@ optparse = OptionParser.new do |parser|
   ) do |string|
     options[:string] = string
   end
-end.parse!
+end
 
 # check the required arguments
 begin
@@ -21,17 +21,23 @@ begin
   mandatory = [:string]
   missing = mandatory.select { |param| options[param].nil? }
   raise OptionParser::MissingArgument, missing.join(', ') unless missing.empty?
-rescue OptionParser::InvalidOption, OptionParser::MissingArgument
-  puts $ERROR_INFO.to_s
+rescue OptionParser::InvalidOption, OptionParser::InvalidArgument, OptionParser::MissingArgument => e
+  puts 'ERROR: ' + e.message
+  puts '----------------------------------------------------------'
   puts optparse
+  puts '----------------------------------------------------------'
   exit
 end
 
 string = options[:string]
 
-result = StringHelper.check_balance_parenthesis(string)
-if result
-  puts string + ' is balanced'
-else
-  puts string + ' is not balanced'
+begin
+  result = StringHelper.check_balance_parenthesis(string)
+  if result
+    puts string + ' is balanced'
+  else
+    puts string + ' is not balanced'
+  end
+rescue Error => e
+  puts 'ERROR: ' + e.message
 end
