@@ -6,6 +6,16 @@ Below is the requirement to run this project:
 - Rspec
 
 # Circular shift (Rotate bits)
+## Assumptions
+
+- I assume that we need to specify the bits because with the same number but different bits, the result will be different.
+- When user input a number which exceeds the maximum value of bits, it will cause error. For example:
+```
+ruby circular_shift.rb -n 256 -b 8 -s 2 -d left
+
+-> NUMBER exceeds the maximum number 255 of 8 bits
+```
+
 ## Command
 
 To run circular shift, please use the command below:
@@ -23,10 +33,14 @@ Usage: circular_shift [options]
     -d, --direction DIRECTION        the DIRECTION that the NUMBER will be circular shifted
 ```
 
+Please note that `-d` default option is `left`.
+
 Example command:
 
 ```
 ruby circular_shift.rb -n 123 -b 8 -s 2 -d left
+ruby circular_shift.rb -n 123 -b 8 -s 2 -d right
+ruby circular_shift.rb -n 123 -b 8 -s 2
 ```
 
 ## Unit tests
