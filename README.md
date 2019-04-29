@@ -99,10 +99,73 @@ I study the problem but I don't have enough time to code.
 ## Solution
 
 - Theory: https://www.geeksforgeeks.org/lru-cache-implementation/
-- Solution: https://stackoverflow.com/a/16161783
+- Solution:
 ```
-Note: in Ruby 1.9 Hash is ordered, so you can cheat and build the fastest LRU cache in a few lines of code
+class LruCache
+
+  def initialize(max_size)
+    @max_size = max_size
+    @data = {}
+  end
+
+  def max_size=(size)
+    raise ArgumentError.new(:max_size) if @max_size < 1
+    @max_size = size
+    if @max_size < @data.size
+      @data.keys[0..@max_size-@data.size].each do |k|
+        @data.delete(k)
+      end
+    end
+  end
+
+  def [](key)
+    found = true
+    value = @data.delete(key){ found = false }
+    if found
+      @data[key] = value
+    else
+      nil
+    end
+  end
+
+  def []=(key,val)
+    @data.delete(key)
+    @data[key] = val
+    if @data.length > @max_size
+      @data.delete(@data.first[0])
+    end
+    val
+  end
+
+  def each
+    @data.reverse.each do |pair|
+      yield pair
+    end
+  end
+
+  # used further up the chain, non thread safe each
+  alias_method :each_unsafe, :each
+
+  def to_a
+    @data.to_a.reverse
+  end
+
+  def delete(k)
+    @data.delete(k)
+  end
+
+  def clear
+    @data.clear
+  end
+
+  def count
+    @data.count
+  end
+
+  # for cache validation only, ensures all is sound
+  def valid?
+    true
+  end
+end
 ```
-- Main implementation file: https://github.com/SamSaffron/lru_redux/blob/master/lib/lru_redux/cache.rb
-- Handle thread safe: https://github.com/SamSaffron/lru_redux/blob/master/lib/lru_redux/util/safe_sync.rb
-- Test: https://github.com/SamSaffron/lru_redux/blob/master/test/cache_test.rb
+- Our cache should handle thread safe cache too
