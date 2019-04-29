@@ -94,7 +94,7 @@ rspec spec/helpers/string_helper_spec.rb
 
 # LRU cache
 
-I study the problem but I don't have enough time to code.
+I study the problem but I don't have enough time to code it properly, with thread safe handling and UT.
 
 ## Solution
 
