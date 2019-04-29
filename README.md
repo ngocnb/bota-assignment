@@ -167,5 +167,14 @@ class LruCache
     true
   end
 end
+
+cache = LruCache.new(3)
+cache[:a] = 1
+cache[:b] = 2
+cache[:c] = 3
+cache[:d] = 4
+
+puts cache
+# output should be: [:d,4],[:c,3],[:b,2]
 ```
 - Our cache should handle thread safe cache too
