@@ -91,3 +91,18 @@ rspec spec
 # to run only unit test for balance of parenthesis
 rspec spec/helpers/string_helper_spec.rb
 ```
+
+# LRU cache
+
+I study the problem but I don't have enough time to code.
+
+## Solution
+
+- Theory: https://www.geeksforgeeks.org/lru-cache-implementation/
+- Solution: https://stackoverflow.com/a/16161783
+```
+Note: in Ruby 1.9 Hash is ordered, so you can cheat and build the fastest LRU cache in a few lines of code
+```
+- Main implementation file: https://github.com/SamSaffron/lru_redux/blob/master/lib/lru_redux/cache.rb
+- Handle thread safe: https://github.com/SamSaffron/lru_redux/blob/master/lib/lru_redux/util/safe_sync.rb
+- Test: https://github.com/SamSaffron/lru_redux/blob/master/test/cache_test.rb
